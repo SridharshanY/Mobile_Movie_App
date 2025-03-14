@@ -1,21 +1,35 @@
-import { View, Text, Image, TextInput } from 'react-native'
-import React from 'react'
-import { icons } from '@/constants/icons'
-import { useRouter } from 'expo-router'
+import { View, Text, Image, TextInput } from "react-native";
+import React from "react";
+import { icons } from "@/constants/icons";
+import { useRouter } from "expo-router";
 
-interface Props{
-    placeholder: string;
-    onPress?: ()=>void;
+interface Props {
+  placeholder: string;
+  value: string;
+  onPress?: () => void;
+  onChangeText?: (text:string) => void;
 }
 
-const SearchBar = ({placeholder, onPress}: Props) => {
-    const router = useRouter()
+const SearchBar = ({ placeholder, onPress, value, onChangeText }: Props) => {
+  const router = useRouter();
   return (
-    <View className='flex-row items-center bg-dark-200 rounded-full px-5 py-4'>
-      <Image source={icons.search} className='size-5' resizeMode='contain' tintColor="#ab8bff" />
-      <TextInput onPress={onPress} placeholder={placeholder} value='' onChangeText={()=>{}} placeholderTextColor={"#a8b5db"} className='flex-1 ml-2 text-white' />
+    <View className="flex-row items-center bg-dark-200 rounded-full px-5 py-4">
+      <Image
+        source={icons.search}
+        className="size-5"
+        resizeMode="contain"
+        tintColor="#ab8bff"
+      />
+      <TextInput
+        onPress={onPress}
+        placeholder={placeholder}
+        value={value}
+        onChangeText={onChangeText}
+        placeholderTextColor={"#a8b5db"}
+        className="flex-1 ml-2 text-white"
+      />
     </View>
-  )
-}
+  );
+};
 
-export default SearchBar
+export default SearchBar;
